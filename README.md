@@ -1,0 +1,2 @@
+# how-to-bind-data-to-the-angular-gantt-chart
+A quick-start project that helps you bind local and remote data to the Syncfusion Angular Gantt Chart component. In this project, remote data is bound by assigning a service URL as an instance of the Data Manager to the dataSource property. The Data Manager acts as an interface between the service endpoint and the Gantt Chart component. This project also contains code to bind self-referential data to the Gantt Chart.
