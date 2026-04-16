@@ -1,15 +1,64 @@
-# How to Bind Data to the Angular Gantt Chart
+# Angular Gantt Data Binding Example
 
-A quick-start project that helps you bind local and remote data to the Syncfusion Angular Gantt Chart component. In this project, remote data is bound by assigning a service URL as an instance of the Data Manager to the dataSource property. The Data Manager acts as an interface between the service endpoint and the Gantt Chart component. This project also contains code to bind self-referential data to the Gantt Chart.
+A demo repository showing Syncfusion Angular Gantt Chart binding with remote and local data.
 
-Documentation: https://ej2.syncfusion.com/angular/documentation/gantt/data-binding
+## Project overview
 
-Online examples: https://ej2.syncfusion.com/angular/demos/#/bootstrap5/gantt/local-data
+- Angular `~19.2.16`
+- `@syncfusion/ej2-angular-gantt`
+- Remote data source with local sample fallback
+- Core files: `src/app/app.component.ts`, `src/app/app.component.html`, `src/data.ts`
 
-## Project prerequisites
+## Installation
 
-Make sure that you have the latest versions of NodeJS and Visual Studio Code in your machine before starting to work on this project.
+```bash
+npm install
+npm start
+```
 
-### How to run this application?
+Open `http://localhost:4200`.
 
-To run this application, you need to clone the `how-to-bind-data-to-the-angular-gantt-chart` repository and then open it in Visual Studio Code. Now, simply install all the necessary react packages into your current project using the `npm install` command and run your project using the `ng serve` command.
+## Usage
+
+Remote binding is configured in `src/app/app.component.ts`:
+
+```ts
+public data: DataManager = new DataManager({
+  url: 'https://ej2services.syncfusion.com/production/web-services/api/GanttData',
+  adaptor: new WebApiAdaptor(),
+  crossDomain: true
+});
+```
+
+The template binds the configured source:
+
+```html
+<ejs-gantt height="490px" [dataSource]="data" [taskFields]="taskSettings"></ejs-gantt>
+```
+
+## Task field mapping
+
+```ts
+public taskSettings: object = {
+  id: 'TaskId',
+  name: 'TaskName',
+  startDate: 'StartDate',
+  duration: 'Duration',
+  progress: 'Progress',
+  child: 'SubTasks',
+  dependency: 'Predecessor'
+};
+```
+
+## Local data source
+
+`src/data.ts` has:
+- `projectNewData` � hierarchical tasks
+- `selfData` � self-referential tasks with `parentID`
+
+Use local arrays instead of the remote `DataManager` for offline binding.
+
+## Notes
+
+- Uses Syncfusion hosted API endpoint.
+- Local arrays in `src/data.ts` can replace remote binding.
