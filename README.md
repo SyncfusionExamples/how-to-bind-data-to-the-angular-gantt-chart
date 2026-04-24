@@ -1,13 +1,16 @@
 # Angular Gantt Data Binding Example
 
-A demo repository showing Syncfusion Angular Gantt Chart binding with remote and local data.
+A sample Angular application demonstrating how to bind the Syncfusion Angular Gantt Chart to both remote and local data sources.
 
-## Project overview
+## Repository Description
 
-- Angular `~19.2.16`
-- `@syncfusion/ej2-angular-gantt`
-- Remote data source with local sample fallback
-- Core files: `src/app/app.component.ts`, `src/app/app.component.html`, `src/data.ts`
+This repository provides an Angular example showing how the Syncfusion Gantt Chart can be configured to load task data from a remote API endpoint or from local in-memory data collections.
+
+## Prerequisites
+
+- Node.js (LTS or later)
+- Angular CLI
+
 
 ## Installation
 
@@ -24,7 +27,7 @@ Remote binding is configured in `src/app/app.component.ts`:
 
 ```ts
 public data: DataManager = new DataManager({
-  url: 'https://ej2services.syncfusion.com/production/web-services/api/GanttData',
+  url: 'https://services.syncfusion.com/angular/production/api/GanttData',
   adaptor: new WebApiAdaptor(),
   crossDomain: true
 });

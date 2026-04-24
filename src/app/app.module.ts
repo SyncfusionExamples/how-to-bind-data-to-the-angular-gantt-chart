@@ -4,9 +4,6 @@ import { GanttModule } from '@syncfusion/ej2-angular-gantt';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     GanttModule
